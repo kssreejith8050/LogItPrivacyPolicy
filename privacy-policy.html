@@ -489,19 +489,236 @@
             color: var(--primary);
         }
 
-        /* Responsive */
+        /* Mobile Quick Navigation Bar */
+        .mobile-toc-bar {
+            display: none;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-toc-details {
+            background-color: var(--surface-elevated);
+            border: 1px solid var(--surface-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .mobile-toc-summary {
+            padding: 0.85rem 1.15rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+            list-style: none;
+        }
+
+        .mobile-toc-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .mobile-toc-content {
+            padding: 0.5rem 0.85rem 0.85rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.4rem;
+            border-top: 1px solid var(--surface-border);
+            background-color: var(--surface);
+        }
+
+        .mobile-toc-link {
+            padding: 0.5rem 0.6rem;
+            font-size: 0.825rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            background-color: var(--surface-elevated);
+            transition: color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .mobile-toc-link:hover, .mobile-toc-link:active {
+            color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        /* Responsive Breakpoints & Mobile Optimization */
         @media (max-width: 860px) {
             .content-wrap {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
             .toc-sidebar {
                 display: none;
             }
+            .mobile-toc-bar {
+                display: block;
+            }
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.1rem;
             }
             .document-body {
-                padding: 1.5rem;
+                padding: 1.75rem 1.25rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Responsive Table -> Card View for Mobile */
+            .table-responsive {
+                border: none;
+                overflow-x: visible;
+            }
+
+            .table-responsive table,
+            .table-responsive thead,
+            .table-responsive tbody,
+            .table-responsive th,
+            .table-responsive td,
+            .table-responsive tr {
+                display: block;
+            }
+
+            .table-responsive thead {
+                display: none;
+            }
+
+            .table-responsive tr {
+                background-color: var(--surface-elevated);
+                border: 1px solid var(--surface-border);
+                border-radius: var(--radius-md);
+                margin-bottom: 1.25rem;
+                padding: 1.25rem;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .table-responsive td {
+                padding: 0.65rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+                word-break: break-word;
+            }
+
+            @media (prefers-color-scheme: light) {
+                .table-responsive tr {
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+                }
+                .table-responsive td {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                }
+            }
+
+            .table-responsive td:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .table-responsive td::before {
+                content: attr(data-label);
+                font-weight: 700;
+                font-size: 0.725rem;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: var(--primary);
+                margin-bottom: 0.15rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-inner {
+                padding: 0.85rem 1rem;
+            }
+
+            .brand-title {
+                font-size: 1.15rem;
+            }
+
+            .brand-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .badge-pill {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+
+            .hero {
+                padding: 2.25rem 1rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .meta-chips {
+                gap: 0.85rem;
+                font-size: 0.8rem;
+                flex-direction: column;
+            }
+
+            .highlights-container {
+                padding: 0 1rem 1.75rem;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+                gap: 0.85rem;
+            }
+
+            .highlight-card {
+                padding: 1rem;
+            }
+
+            .content-wrap {
+                padding: 0 1rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .document-body {
+                padding: 1.25rem 1rem;
+                border-radius: var(--radius-md);
+            }
+
+            .section-heading {
+                font-size: 1.2rem;
+                gap: 0.4rem;
+                flex-wrap: wrap;
+            }
+
+            .section-number {
+                font-size: 0.75rem;
+                padding: 0.1rem 0.4rem;
+            }
+
+            .callout {
+                padding: 1rem;
+                font-size: 0.85rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .callout-icon {
+                margin-top: 0;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            code {
+                word-break: break-all;
             }
         }
     </style>
@@ -588,6 +805,29 @@
         <!-- Document Body -->
         <article class="document-body">
 
+            <!-- Mobile Quick Navigation Bar -->
+            <nav class="mobile-toc-bar">
+                <details class="mobile-toc-details">
+                    <summary class="mobile-toc-summary">
+                        <span>📌 Jump to Section</span>
+                        <span class="mobile-toc-icon">▼</span>
+                    </summary>
+                    <div class="mobile-toc-content">
+                        <a href="#introduction" class="mobile-toc-link">01. Overview</a>
+                        <a href="#information-we-handle" class="mobile-toc-link">02. Data Handled</a>
+                        <a href="#permissions" class="mobile-toc-link">03. Permissions</a>
+                        <a href="#google-drive" class="mobile-toc-link">04. Google Drive</a>
+                        <a href="#data-security" class="mobile-toc-link">05. Security</a>
+                        <a href="#third-parties" class="mobile-toc-link">06. Third Parties</a>
+                        <a href="#data-retention-deletion" class="mobile-toc-link">07. Data Deletion</a>
+                        <a href="#user-rights" class="mobile-toc-link">08. Your Rights</a>
+                        <a href="#children" class="mobile-toc-link">09. Children's Privacy</a>
+                        <a href="#changes" class="mobile-toc-link">10. Policy Updates</a>
+                        <a href="#contact" class="mobile-toc-link">11. Contact Us</a>
+                    </div>
+                </details>
+            </nav>
+
             <!-- Section 1 -->
             <section id="introduction" class="section-block">
                 <h2 class="section-heading"><span class="section-number">01</span> Introduction & Overview</h2>
@@ -645,73 +885,73 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
+                                <td data-label="Permission Identifier">
                                     <code>READ_CONTACTS</code><br>
                                     <small style="color: var(--text-subtle);">android.permission.READ_CONTACTS</small>
                                 </td>
-                                <td><span style="color: var(--accent-amber); font-weight: 600;">Runtime / Dangerous</span></td>
-                                <td>Client Contact Import Feature</td>
-                                <td>
+                                <td data-label="Permission Type"><span style="color: var(--accent-amber); font-weight: 600;">Runtime / Dangerous</span></td>
+                                <td data-label="Feature / Purpose">Client Contact Import Feature</td>
+                                <td data-label="Privacy Safeguards">
                                     <strong>On-Demand Contact Picker:</strong> Used exclusively when you tap <em>"Import from Contacts"</em> in the client creation screen. Only the specific contact card selected by you is accessed to prefill the client's name, phone number, email address, and physical address.<br>
                                     <strong>No Address Book Scraping:</strong> LogIt <strong>never</strong> reads, scans, harvests, or uploads your address book. Imported details are immediately encrypted using SQLCipher AES-256 and stored purely in your local database.
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td data-label="Permission Identifier">
                                     <code>INTERNET</code><br>
                                     <small style="color: var(--text-subtle);">android.permission.INTERNET</small>
                                 </td>
-                                <td><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
-                                <td>Encrypted Cloud Backup &amp; Restore</td>
-                                <td>
+                                <td data-label="Permission Type"><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
+                                <td data-label="Feature / Purpose">Encrypted Cloud Backup &amp; Restore</td>
+                                <td data-label="Privacy Safeguards">
                                     <strong>Google Drive API Communication:</strong> Used strictly to establish secure, TLS 1.3 encrypted HTTPS connections with official Google Drive servers when performing manual or scheduled database backups/restores.<br>
                                     <strong>Zero External Connections:</strong> No traffic is ever routed to developer servers, third-party analytics platforms, advertising networks, or tracking services.
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td data-label="Permission Identifier">
                                     <code>ACCESS_NETWORK_STATE</code><br>
                                     <small style="color: var(--text-subtle);">android.permission.ACCESS_NETWORK_STATE</small>
                                 </td>
-                                <td><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
-                                <td>Network Connectivity Verification</td>
-                                <td>
+                                <td data-label="Permission Type"><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
+                                <td data-label="Feature / Purpose">Network Connectivity Verification</td>
+                                <td data-label="Privacy Safeguards">
                                     <strong>Smart Background Scheduling:</strong> Queried by Android WorkManager (<code>GoogleDriveBackupWorker</code>) to verify Wi-Fi / unmetered internet connectivity before launching automated cloud backups. This prevents failed network calls and conserves device battery.<br>
                                     <strong>No Personal Data:</strong> Only checks system network state flags.
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td data-label="Permission Identifier">
                                     <code>USE_BIOMETRIC</code><br>
                                     <small style="color: var(--text-subtle);">android.permission.USE_BIOMETRIC</small>
                                 </td>
-                                <td><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
-                                <td>App Security Lock</td>
-                                <td>
+                                <td data-label="Permission Type"><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
+                                <td data-label="Feature / Purpose">App Security Lock</td>
+                                <td data-label="Privacy Safeguards">
                                     <strong>Local Biometric Authentication:</strong> Enables Fingerprint or Face Recognition unlock via Android's official <code>BiometricPrompt</code> system framework.<br>
                                     <strong>Hardware Enclave Protection:</strong> Biometric verification occurs entirely inside the device's Trusted Execution Environment (TEE) / StrongBox Keymaster hardware. The App never sees, accesses, or stores raw biometric data or images.
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td data-label="Permission Identifier">
                                     <code>VIBRATE</code><br>
                                     <small style="color: var(--text-subtle);">android.permission.VIBRATE</small>
                                 </td>
-                                <td><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
-                                <td>Tactile Haptic Feedback</td>
-                                <td>
+                                <td data-label="Permission Type"><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
+                                <td data-label="Feature / Purpose">Tactile Haptic Feedback</td>
+                                <td data-label="Privacy Safeguards">
                                     <strong>User Interface Confirmation:</strong> Triggers subtle physical tactile feedback when interacting with key UI elements, logging sessions, or unlocking the app.<br>
                                     <strong>Offline Hardware Action:</strong> Involves no data collection or storage.
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td data-label="Permission Identifier">
                                     <code>FileProvider</code> URIs<br>
                                     <small style="color: var(--text-subtle);">androidx.core.content.FileProvider</small>
                                 </td>
-                                <td><span style="color: var(--accent-blue); font-weight: 600;">Internal Security API</span></td>
-                                <td>Secure Export &amp; Document Sharing</td>
-                                <td>
+                                <td data-label="Permission Type"><span style="color: var(--accent-blue); font-weight: 600;">Internal Security API</span></td>
+                                <td data-label="Feature / Purpose">Secure Export &amp; Document Sharing</td>
+                                <td data-label="Privacy Safeguards">
                                     <strong>Granular Temporary Grants:</strong> Utilizes Android <code>FileProvider</code> with <code>FLAG_GRANT_READ_URI_PERMISSION</code> to share exported backup files or session reports with specific target apps chosen by you.<br>
                                     <strong>No Storage Permissions Required:</strong> Eliminates the need for broad, sensitive storage permissions like <code>READ_EXTERNAL_STORAGE</code> or <code>MANAGE_EXTERNAL_STORAGE</code>.
                                 </td>
@@ -866,7 +1106,7 @@
                 
                 <div class="callout callout-info" style="flex-direction: column; gap: 0.5rem;">
                     <div><strong>BuildParrot Support</strong></div>
-                    <div>Developer: Sreejith</div>
+                    <div>Developer: Sreejith K S</div>
                     <div>Email: <a href="mailto:programacc8050@gmail.com" style="color: var(--primary); text-decoration: underline;">programacc8050@gmail.com</a></div>
                 </div>
             </section>
