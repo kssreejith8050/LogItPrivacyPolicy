@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         :root {
             --primary: #4F46E5;
@@ -114,14 +115,8 @@
         .brand-icon {
             width: 36px;
             height: 36px;
-            background: linear-gradient(135deg, #4F46E5, #06B6D4);
             border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            font-size: 1.1rem;
+            object-fit: cover;
             box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
         }
 
@@ -517,7 +512,7 @@
     <header>
         <div class="header-inner">
             <a href="#" class="brand">
-                <div class="brand-icon">L</div>
+                <img src="logit.svg" alt="LogIt Logo" class="brand-icon">
                 <div class="brand-title">LogIt</div>
             </a>
             <div class="badge-pill">Google Play Compliant</div>
@@ -615,11 +610,13 @@
                 <h2 class="section-heading"><span class="section-number">02</span> Information We Handle</h2>
                 <p>Because LogIt runs locally on your device, the information you enter is handled exclusively by your local installation:</p>
                 
-                <h3>A. Client Profiles & Session Information</h3>
+                <h3>A. Client Profiles, Session Information &amp; Media</h3>
                 <ul>
                     <li><strong>Client Demographics:</strong> First name, middle name, last name, phone number, email address, physical address, and date of birth.</li>
+                    <li><strong>Client Profile Photos &amp; Vault Media:</strong> Profile photos and encrypted client attachments saved locally in <code>client_vault/</code>.</li>
+                    <li><strong>Session Records &amp; Notes:</strong> Timestamps, session notes, progress tracking, exercise logs, status tags, and associated metadata.</li>
+                    <li><strong>Session Photos &amp; Exercise Videos:</strong> Photos and video clips captured or attached during workout sessions saved in <code>workout_media/</code>.</li>
                     <li><strong>Emergency Contacts:</strong> Emergency contact full name, telephone number, and relation.</li>
-                    <li><strong>Session Records & Notes:</strong> Timestamps, session notes, progress tracking, status tags, and associated metadata.</li>
                     <li><strong>User Preferences:</strong> App lock preferences, biometric toggles, and UI theme options.</li>
                 </ul>
 
@@ -631,55 +628,128 @@
 
             <!-- Section 3 -->
             <section id="permissions" class="section-block">
-                <h2 class="section-heading"><span class="section-number">03</span> Device Permissions & Usage</h2>
-                <p>LogIt requests only the permissions strictly required to execute core functionality. Here is complete transparency on how each permission is used:</p>
+                <h2 class="section-heading"><span class="section-number">03</span> Device Permissions &amp; Usage Details</h2>
+                <p>
+                    LogIt adheres strictly to the principle of least privilege. We request only the Android system permissions strictly necessary to deliver core features and user security. Below is a comprehensive breakdown of every permission declared and used by LogIt, including its purpose, trigger mechanism, and data privacy safeguards:
+                </p>
 
                 <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
-                                <th>Permission</th>
-                                <th>Purpose</th>
-                                <th>How Data is Handled</th>
+                                <th>Permission &amp; Manifest Identifier</th>
+                                <th>Type</th>
+                                <th>Feature / Purpose</th>
+                                <th>How Data is Handled &amp; Privacy Safeguards</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>READ_CONTACTS</code></td>
-                                <td>Client Import Feature</td>
                                 <td>
-                                    When you tap "Import from Contacts", the Android contact picker opens. Only the specific contact you tap is accessed to prefill name, phone, email, and address. LogIt <strong>never</strong> reads your full address book and never uploads contact data anywhere.
+                                    <code>READ_CONTACTS</code><br>
+                                    <small style="color: var(--text-subtle);">android.permission.READ_CONTACTS</small>
+                                </td>
+                                <td><span style="color: var(--accent-amber); font-weight: 600;">Runtime / Dangerous</span></td>
+                                <td>Client Contact Import Feature</td>
+                                <td>
+                                    <strong>On-Demand Contact Picker:</strong> Used exclusively when you tap <em>"Import from Contacts"</em> in the client creation screen. Only the specific contact card selected by you is accessed to prefill the client's name, phone number, email address, and physical address.<br>
+                                    <strong>No Address Book Scraping:</strong> LogIt <strong>never</strong> reads, scans, harvests, or uploads your address book. Imported details are immediately encrypted using SQLCipher AES-256 and stored purely in your local database.
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>INTERNET</code> &amp; <code>ACCESS_NETWORK_STATE</code></td>
-                                <td>Cloud Backup &amp; Restore</td>
                                 <td>
-                                    Used exclusively to communicate with official Google Drive APIs when you execute or schedule a database backup/restore. No connection is made to any other server.
+                                    <code>INTERNET</code><br>
+                                    <small style="color: var(--text-subtle);">android.permission.INTERNET</small>
+                                </td>
+                                <td><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
+                                <td>Encrypted Cloud Backup &amp; Restore</td>
+                                <td>
+                                    <strong>Google Drive API Communication:</strong> Used strictly to establish secure, TLS 1.3 encrypted HTTPS connections with official Google Drive servers when performing manual or scheduled database backups/restores.<br>
+                                    <strong>Zero External Connections:</strong> No traffic is ever routed to developer servers, third-party analytics platforms, advertising networks, or tracking services.
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>USE_BIOMETRIC</code></td>
+                                <td>
+                                    <code>ACCESS_NETWORK_STATE</code><br>
+                                    <small style="color: var(--text-subtle);">android.permission.ACCESS_NETWORK_STATE</small>
+                                </td>
+                                <td><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
+                                <td>Network Connectivity Verification</td>
+                                <td>
+                                    <strong>Smart Background Scheduling:</strong> Queried by Android WorkManager (<code>GoogleDriveBackupWorker</code>) to verify Wi-Fi / unmetered internet connectivity before launching automated cloud backups. This prevents failed network calls and conserves device battery.<br>
+                                    <strong>No Personal Data:</strong> Only checks system network state flags.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>USE_BIOMETRIC</code><br>
+                                    <small style="color: var(--text-subtle);">android.permission.USE_BIOMETRIC</small>
+                                </td>
+                                <td><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
                                 <td>App Security Lock</td>
                                 <td>
-                                    Enables fingerprint or biometric face unlock via Android BiometricPrompt. Biometric verification occurs entirely within the device's hardware enclave; the App never has access to raw biometric data.
+                                    <strong>Local Biometric Authentication:</strong> Enables Fingerprint or Face Recognition unlock via Android's official <code>BiometricPrompt</code> system framework.<br>
+                                    <strong>Hardware Enclave Protection:</strong> Biometric verification occurs entirely inside the device's Trusted Execution Environment (TEE) / StrongBox Keymaster hardware. The App never sees, accesses, or stores raw biometric data or images.
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>VIBRATE</code></td>
-                                <td>Haptic Feedback</td>
                                 <td>
-                                    Provides tactile confirmation when completing actions or entering security locks. No personal information is involved.
+                                    <code>VIBRATE</code><br>
+                                    <small style="color: var(--text-subtle);">android.permission.VIBRATE</small>
+                                </td>
+                                <td><span style="color: var(--accent-green); font-weight: 600;">Normal</span></td>
+                                <td>Tactile Haptic Feedback</td>
+                                <td>
+                                    <strong>User Interface Confirmation:</strong> Triggers subtle physical tactile feedback when interacting with key UI elements, logging sessions, or unlocking the app.<br>
+                                    <strong>Offline Hardware Action:</strong> Involves no data collection or storage.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>FileProvider</code> URIs<br>
+                                    <small style="color: var(--text-subtle);">androidx.core.content.FileProvider</small>
+                                </td>
+                                <td><span style="color: var(--accent-blue); font-weight: 600;">Internal Security API</span></td>
+                                <td>Secure Export &amp; Document Sharing</td>
+                                <td>
+                                    <strong>Granular Temporary Grants:</strong> Utilizes Android <code>FileProvider</code> with <code>FLAG_GRANT_READ_URI_PERMISSION</code> to share exported backup files or session reports with specific target apps chosen by you.<br>
+                                    <strong>No Storage Permissions Required:</strong> Eliminates the need for broad, sensitive storage permissions like <code>READ_EXTERNAL_STORAGE</code> or <code>MANAGE_EXTERNAL_STORAGE</code>.
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
+                <h3>Detailed Permission Safeguards &amp; Disclosures</h3>
+
+                <h4>1. Prominent Disclosure on Contacts Access (Google Play Compliant)</h4>
+                <p>
+                    In full compliance with Google Play's Prominent Disclosure and Consent policy, LogIt presents an explicit, dedicated disclosure modal inside the app <strong>before</strong> triggering the Android system contact permission prompt.
+                </p>
+                <ul>
+                    <li><strong>Clear Explanation:</strong> The disclosure explicitly informs you that contact permission is used solely to prefill client details from a single selected contact.</li>
+                    <li><strong>User Control:</strong> You can choose <em>"Cancel"</em> to decline permission at any time and manually enter client details instead. The app remains 100% functional even if contact permission is denied.</li>
+                </ul>
+
+                <h4>2. Background Tasks &amp; Service Execution</h4>
+                <p>
+                    LogIt uses Android <code>WorkManager</code> for automated database backups. Scheduled tasks run periodically in the background only when configured by the user. LogIt does <strong>not</strong> use invasive foreground service notifications or permanent background processes, and has explicitly removed <code>FOREGROUND_SERVICE</code> permissions.
+                </p>
+
+                <h4>3. How to Inspect &amp; Revoke Permissions</h4>
+                <p>
+                    You maintain complete control over all system permissions granted to LogIt. You can review, grant, or revoke permissions at any time through your device settings:
+                </p>
+                <ol>
+                    <li>Open your Android device <strong>Settings</strong>.</li>
+                    <li>Navigate to <strong>Apps</strong> (or <em>App Management</em>) &gt; <strong>LogIt</strong>.</li>
+                    <li>Tap <strong>Permissions</strong> to view or modify access (e.g., set <em>Contacts</em> to <em>Allow</em> or <em>Don't Allow</em>).</li>
+                </ol>
+
                 <div class="callout callout-info">
                     <div class="callout-icon">ℹ️</div>
                     <div>
-                        <strong>Prominent Disclosure on Contact Access:</strong> LogIt utilizes <code>READ_CONTACTS</code> purely on-demand when you explicitly invoke the contact picker to save time manually typing client details. Contact data is treated with identical AES-256 encryption within your local database.
+                        <strong>Google Play Policy Guarantee:</strong> LogIt does not request any hidden, unused, or dangerous permissions. All permissions declared in the <code>AndroidManifest.xml</code> serve explicit, user-facing core app functions.
                     </div>
                 </div>
             </section>
@@ -701,6 +771,11 @@
                     <li><strong>No Access to Personal Files:</strong> The App can <strong>only</strong> read and write files within its own isolated, hidden Application Data folder in your Google Drive.</li>
                     <li><strong>Complete Isolation:</strong> LogIt cannot view, list, read, modify, or delete any of your personal documents, photos, spreadsheets, or other folders stored in your Google Drive.</li>
                 </ul>
+
+                <h3>Comprehensive Encrypted Backups (Database &amp; Media)</h3>
+                <p>
+                    When cloud backup is performed, LogIt automatically packages your encrypted SQLCipher database snapshot together with all stored client profile photos, session images, and exercise video clips into a unified, AES-256-GCM encrypted ZIP archive before syncing to Google Drive. This guarantees 100% complete restoration of all records and media files when restoring a backup.
+                </p>
 
                 <h3>Google API Services User Data Policy Compliance</h3>
                 <p>
