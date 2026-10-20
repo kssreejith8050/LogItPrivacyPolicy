@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - LogIt</title>
+    <meta name="description" content="Privacy Policy for LogIt - A secure, local-first client management and session logging application.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --primary-light: #EEF2FF;
+            --primary-ring: rgba(79, 70, 229, 0.2);
+            --bg: #0B0F19;
+            --surface: #111827;
+            --surface-elevated: #1F2937;
+            --surface-border: #374151;
+            --text-main: #F9FAFB;
+            --text-muted: #9CA3AF;
+            --text-subtle: #6B7280;
+            --accent-green: #10B981;
+            --accent-green-bg: rgba(16, 185, 129, 0.12);
+            --accent-blue: #3B82F6;
+            --accent-blue-bg: rgba(59, 130, 246, 0.12);
+            --accent-amber: #F59E0B;
+            --accent-amber-bg: rgba(245, 158, 11, 0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            --container-max: 1120px;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #F8FAFC;
+                --surface: #FFFFFF;
+                --surface-elevated: #F1F5F9;
+                --surface-border: #E2E8F0;
+                --text-main: #0F172A;
+                --text-muted: #475569;
+                --text-subtle: #94A3B8;
+                --primary: #4F46E5;
+                --primary-hover: #4338CA;
+                --primary-light: #EEF2FF;
+                --accent-green: #059669;
+                --accent-green-bg: #ECFDF5;
+                --accent-blue: #2563EB;
+                --accent-blue-bg: #EFF6FF;
+                --accent-amber: #D97706;
+                --accent-amber-bg: #FFFBEB;
+                --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navigation Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background-color: rgba(17, 24, 39, 0.85);
+            border-bottom: 1px solid var(--surface-border);
+        }
+
+        @media (prefers-color-scheme: light) {
+            header {
+                background-color: rgba(255, 255, 255, 0.88);
+            }
+        }
+
+        .header-inner {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .brand-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #4F46E5, #06B6D4);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+        }
+
+        .brand-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            background: var(--accent-green-bg);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .badge-pill::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--accent-green);
+        }
+
+        /* Hero Banner */
+        .hero {
+            padding: 3.5rem 1.5rem 2rem;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 680px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .meta-chips {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--text-subtle);
+        }
+
+        .meta-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Pillars / Highlights Grid */
+        .highlights-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 1.5rem 2.5rem;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .highlight-card {
+            background-color: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .highlight-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+        }
+
+        .highlight-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight-desc {
+            font-size: 0.825rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        /* Main Content Layout */
+        .content-wrap {
+            max-width: var(--container-max);
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        /* Sticky Table of Contents Sidebar */
+        .toc-sidebar {
+            position: sticky;
+            top: 5rem;
+            background-color: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            max-height: calc(100vh - 6rem);
+            overflow-y: auto;
+        }
+
+        .toc-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-subtle);
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .toc-link {
+            display: block;
+            padding: 0.4rem 0.6rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.15s ease;
+        }
+
+        .toc-link:hover {
+            color: var(--text-main);
+            background-color: var(--surface-elevated);
+        }
+
+        /* Document Body */
+        .document-body {
+            background-color: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-block {
+            margin-bottom: 3rem;
+            scroll-margin-top: 5.5rem;
+        }
+
+        .section-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-heading {
+            font-size: 1.45rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--surface-border);
+        }
+
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 0.15rem 0.5rem;
+            border-radius: var(--radius-sm);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .section-number {
+                background: rgba(79, 70, 229, 0.2);
+                color: #A5B4FC;
+            }
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0.75rem 0 1.25rem 1.4rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Callout Banners */
+        .callout {
+            border-radius: var(--radius-md);
+            padding: 1.15rem 1.25rem;
+            margin: 1.25rem 0;
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+
+        .callout-info {
+            background-color: var(--accent-blue-bg);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #93C5FD;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .callout-info {
+                color: #1E40AF;
+            }
+        }
+
+        .callout-success {
+            background-color: var(--accent-green-bg);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #6EE7B7;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .callout-success {
+                color: #065F46;
+            }
+        }
+
+        .callout-warning {
+            background-color: var(--accent-amber-bg);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #FCD34D;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .callout-warning {
+                color: #92400E;
+            }
+        }
+
+        .callout-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: -0.1rem;
+        }
+
+        /* Tables */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 1.25rem 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--surface-border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.875rem;
+        }
+
+        th {
+            background-color: var(--surface-elevated);
+            color: var(--text-main);
+            padding: 0.85rem 1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--surface-border);
+        }
+
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--surface-border);
+            color: var(--text-muted);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.825em;
+            background-color: var(--surface-elevated);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            color: var(--primary);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            code {
+                color: #A5B4FC;
+            }
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            background-color: var(--surface);
+            border-top: 1px solid var(--surface-border);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-subtle);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .content-wrap {
+                grid-template-columns: 1fr;
+            }
+            .toc-sidebar {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .document-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="#" class="brand">
+                <div class="brand-icon">L</div>
+                <div class="brand-title">LogIt</div>
+            </a>
+            <div class="badge-pill">Google Play Compliant</div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Privacy Policy</h1>
+        <p>LogIt is built with a local-first, zero-knowledge architecture. Your client records, session notes, and sensitive data stay entirely in your control.</p>
+        <div class="meta-chips">
+            <div class="meta-chip">
+                <span>📅 Effective Date:</span>
+                <strong>October 20, 2026</strong>
+            </div>
+            <div class="meta-chip">
+                <span>📦 Package:</span>
+                <code>com.buildparrot.logit</code>
+            </div>
+            <div class="meta-chip">
+                <span>🛡️ Developer:</span>
+                <strong>BuildParrot</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillars / Highlights -->
+    <section class="highlights-container">
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <div class="highlight-icon" style="background: rgba(16, 185, 129, 0.15); color: #10B981;">🔒</div>
+                <div class="highlight-title">Encrypted at Rest</div>
+                <div class="highlight-desc">Database is protected using SQLCipher 256-bit AES encryption with hardware-backed Android Keystore keys.</div>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon" style="background: rgba(59, 130, 246, 0.15); color: #3B82F6;">🚫</div>
+                <div class="highlight-title">Zero Tracking or Ads</div>
+                <div class="highlight-desc">No advertising SDKs, no behavioral trackers, and no third-party analytics gathering your personal information.</div>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon" style="background: rgba(139, 92, 246, 0.15); color: #8B5CF6;">☁️</div>
+                <div class="highlight-title">Isolated Drive Sync</div>
+                <div class="highlight-desc">Google Drive backups only access LogIt's private AppData folder. The app cannot see any other files in your Drive.</div>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B;">👤</div>
+                <div class="highlight-title">On-Device Contacts</div>
+                <div class="highlight-desc">Contact picker only imports individual contacts you deliberately choose. No address book dumping or uploading.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Area -->
+    <main class="content-wrap">
+        <!-- Sidebar Navigation -->
+        <aside class="toc-sidebar">
+            <div class="toc-title">Table of Contents</div>
+            <ul class="toc-list">
+                <li><a href="#introduction" class="toc-link">1. Introduction & Overview</a></li>
+                <li><a href="#information-we-handle" class="toc-link">2. Information We Handle</a></li>
+                <li><a href="#permissions" class="toc-link">3. Device Permissions</a></li>
+                <li><a href="#google-drive" class="toc-link">4. Google Drive & Limited Use</a></li>
+                <li><a href="#data-security" class="toc-link">5. Data Security & Storage</a></li>
+                <li><a href="#third-parties" class="toc-link">6. Third-Party Services</a></li>
+                <li><a href="#data-retention-deletion" class="toc-link">7. Data Retention & Deletion</a></li>
+                <li><a href="#user-rights" class="toc-link">8. GDPR & CCPA Rights</a></li>
+                <li><a href="#children" class="toc-link">9. Children's Privacy</a></li>
+                <li><a href="#changes" class="toc-link">10. Policy Updates</a></li>
+                <li><a href="#contact" class="toc-link">11. Contact Information</a></li>
+            </ul>
+        </aside>
+
+        <!-- Document Body -->
+        <article class="document-body">
+
+            <!-- Section 1 -->
+            <section id="introduction" class="section-block">
+                <h2 class="section-heading"><span class="section-number">01</span> Introduction & Overview</h2>
+                <p>
+                    Welcome to <strong>LogIt</strong> ("the App", "we", "our", or "us"), developed by <strong>BuildParrot</strong>. LogIt is a client tracking, session logging, and management application tailored for practitioners, consultants, coaches, and professionals who demand total confidentiality and control over their client data.
+                </p>
+                <p>
+                    We believe privacy is a fundamental human right. Our core philosophy is <strong>Local-First and Zero-Knowledge</strong>. We do not operate proprietary tracking servers, we do not monetize your data, and we do not monitor your clients or notes.
+                </p>
+                <div class="callout callout-success">
+                    <div class="callout-icon">💡</div>
+                    <div>
+                        <strong>Key Takeaway:</strong> Your records, notes, and profile details are encrypted and stored directly on your physical Android device. Unless you explicitly choose to back up to your own private Google Drive storage, data never leaves your hardware.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section id="information-we-handle" class="section-block">
+                <h2 class="section-heading"><span class="section-number">02</span> Information We Handle</h2>
+                <p>Because LogIt runs locally on your device, the information you enter is handled exclusively by your local installation:</p>
+                
+                <h3>A. Client Profiles & Session Information</h3>
+                <ul>
+                    <li><strong>Client Demographics:</strong> First name, middle name, last name, phone number, email address, physical address, and date of birth.</li>
+                    <li><strong>Emergency Contacts:</strong> Emergency contact full name, telephone number, and relation.</li>
+                    <li><strong>Session Records & Notes:</strong> Timestamps, session notes, progress tracking, status tags, and associated metadata.</li>
+                    <li><strong>User Preferences:</strong> App lock preferences, biometric toggles, and UI theme options.</li>
+                </ul>
+
+                <h3>B. Technical Data (Non-Identifiable)</h3>
+                <p>
+                    LogIt does not collect device telemetry, IP logs, or advertisement identifiers (AAID). Android system crash reports may only be collected if you have globally opted in to share diagnostics via Google Play Services in your Android OS settings.
+                </p>
+            </section>
+
+            <!-- Section 3 -->
+            <section id="permissions" class="section-block">
+                <h2 class="section-heading"><span class="section-number">03</span> Device Permissions & Usage</h2>
+                <p>LogIt requests only the permissions strictly required to execute core functionality. Here is complete transparency on how each permission is used:</p>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Permission</th>
+                                <th>Purpose</th>
+                                <th>How Data is Handled</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>READ_CONTACTS</code></td>
+                                <td>Client Import Feature</td>
+                                <td>
+                                    When you tap "Import from Contacts", the Android contact picker opens. Only the specific contact you tap is accessed to prefill name, phone, email, and address. LogIt <strong>never</strong> reads your full address book and never uploads contact data anywhere.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>INTERNET</code> &amp; <code>ACCESS_NETWORK_STATE</code></td>
+                                <td>Cloud Backup &amp; Restore</td>
+                                <td>
+                                    Used exclusively to communicate with official Google Drive APIs when you execute or schedule a database backup/restore. No connection is made to any other server.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>USE_BIOMETRIC</code></td>
+                                <td>App Security Lock</td>
+                                <td>
+                                    Enables fingerprint or biometric face unlock via Android BiometricPrompt. Biometric verification occurs entirely within the device's hardware enclave; the App never has access to raw biometric data.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>VIBRATE</code></td>
+                                <td>Haptic Feedback</td>
+                                <td>
+                                    Provides tactile confirmation when completing actions or entering security locks. No personal information is involved.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout callout-info">
+                    <div class="callout-icon">ℹ️</div>
+                    <div>
+                        <strong>Prominent Disclosure on Contact Access:</strong> LogIt utilizes <code>READ_CONTACTS</code> purely on-demand when you explicitly invoke the contact picker to save time manually typing client details. Contact data is treated with identical AES-256 encryption within your local database.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="google-drive" class="section-block">
+                <h2 class="section-heading"><span class="section-number">04</span> Google Drive API & Limited Use Disclosure</h2>
+                <p>
+                    LogIt provides an optional, encrypted cloud backup and restore capability utilizing Google Drive. If you choose to enable this feature, please review our compliance with Google API policies:
+                </p>
+
+                <h3>Application Data Folder Scope Only</h3>
+                <p>
+                    LogIt requests the restricted Google Drive scope:
+                    <br>
+                    <code>https://www.googleapis.com/auth/drive.appdata</code> (<code>DriveScopes.DRIVE_APPDATA</code>).
+                </p>
+                <ul>
+                    <li><strong>No Access to Personal Files:</strong> The App can <strong>only</strong> read and write files within its own isolated, hidden Application Data folder in your Google Drive.</li>
+                    <li><strong>Complete Isolation:</strong> LogIt cannot view, list, read, modify, or delete any of your personal documents, photos, spreadsheets, or other folders stored in your Google Drive.</li>
+                </ul>
+
+                <h3>Google API Services User Data Policy Compliance</h3>
+                <p>
+                    LogIt's use and transfer to any other app of information received from Google APIs will adhere to the 
+                    <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Google API Services User Data Policy</a>, including the <strong>Limited Use</strong> requirements:
+                </p>
+                <ol>
+                    <li>We use Google Drive access solely to provide backup and synchronization capabilities requested by the user.</li>
+                    <li>We do not transfer or disclose Google user data to third parties.</li>
+                    <li>We do not use Google user data for serving advertisements, retargeting, or profiling.</li>
+                    <li>Human beings do not read your Google user data or backup files.</li>
+                </ol>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="data-security" class="section-block">
+                <h2 class="section-heading"><span class="section-number">05</span> Data Security & Architecture</h2>
+                <p>We deploy defense-in-depth security best practices to protect your information:</p>
+
+                <ul>
+                    <li><strong>SQLCipher AES-256 Encryption:</strong> Your Room database is encrypted at rest on your physical flash storage using SQLCipher 256-bit encryption.</li>
+                    <li><strong>Android Keystore Integration:</strong> Encryption keys are bound to your device hardware via Android Keystore and Jetpack Security (EncryptedSharedPreferences).</li>
+                    <li><strong>Biometric Lockouts:</strong> Optional biometric and PIN authentication ensures that unauthorized individuals cannot open LogIt even if your device is unlocked.</li>
+                    <li><strong>No Developer Backdoors:</strong> We have no administrative accounts, remote login portals, or backdoor keys. You are the sole custodian of your database.</li>
+                </ul>
+            </section>
+
+            <!-- Section 6 -->
+            <section id="third-parties" class="section-block">
+                <h2 class="section-heading"><span class="section-number">06</span> Third-Party Services & Libraries</h2>
+                <p>LogIt does <strong>not</strong> include any advertising networks, behavioral analytics platforms, or social network tracking SDKs.</p>
+                
+                <p>The only third-party service provider involved is:</p>
+                <ul>
+                    <li><strong>Google LLC (Google Play Services / Google Drive API):</strong> Utilized solely when you choose to connect Google Drive for backing up or restoring your application database. Governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Google's Privacy Policy</a>.</li>
+                </ul>
+            </section>
+
+            <!-- Section 7 -->
+            <section id="data-retention-deletion" class="section-block">
+                <h2 class="section-heading"><span class="section-number">07</span> Data Retention & Complete Deletion</h2>
+                <p>Because you retain 100% ownership and custody of your data, you can delete your data at any time without submitting a request:</p>
+                
+                <h3>How to Delete Your Data:</h3>
+                <ul>
+                    <li><strong>Delete Within App:</strong> You can edit or permanently delete individual client cards, session logs, and notes within LogIt.</li>
+                    <li><strong>Clear All Local Data:</strong> Open your device <em>Settings &gt; Apps &gt; LogIt &gt; Storage &gt; Clear Storage / Clear Data</em>. This instantly erases all local encrypted databases and keys.</li>
+                    <li><strong>Uninstalling the App:</strong> Uninstalling LogIt removes all application directories and local sandbox files from your phone.</li>
+                    <li><strong>Remove Cloud Backups:</strong> You can delete backups directly within the LogIt backup screen, or navigate to Google Drive on the web &gt; <em>Settings &gt; Manage Apps &gt; LogIt &gt; Options &gt; Delete hidden app data</em>.</li>
+                </ul>
+            </section>
+
+            <!-- Section 8 -->
+            <section id="user-rights" class="section-block">
+                <h2 class="section-heading"><span class="section-number">08</span> Your Rights (GDPR, CCPA/CPRA Compliant)</h2>
+                <p>
+                    Regardless of your geographic location (including the European Economic Area under GDPR and California under CCPA/CPRA), LogIt naturally provides full self-service fulfillment of your statutory privacy rights:
+                </p>
+
+                <ul>
+                    <li><strong>Right to Access &amp; Portability:</strong> You can view all records directly in the app or export/backup your database file at any time.</li>
+                    <li><strong>Right to Rectification:</strong> Edit any client record, telephone number, or log instantly inside the application.</li>
+                    <li><strong>Right to Erasure ("Right to be Forgotten"):</strong> Erase records locally or wipe app data as detailed in Section 07.</li>
+                    <li><strong>No Sale or Sharing of Personal Data:</strong> We do not sell, rent, or share personal data under CCPA/CPRA.</li>
+                </ul>
+            </section>
+
+            <!-- Section 9 -->
+            <section id="children" class="section-block">
+                <h2 class="section-heading"><span class="section-number">09</span> Children's Privacy</h2>
+                <p>
+                    LogIt is a professional productivity tool designed for adult practitioners and businesses. It is not intended for or directed toward children under 13 years of age (or under 16 in certain jurisdictions). We do not knowingly collect personal information from children. If you become aware that data has been collected contrary to this policy, please contact us.
+                </p>
+            </section>
+
+            <!-- Section 10 -->
+            <section id="changes" class="section-block">
+                <h2 class="section-heading"><span class="section-number">10</span> Changes to This Privacy Policy</h2>
+                <p>
+                    We may periodically update this Privacy Policy to reflect app updates, new security features, or legal requirements. Any modifications will be posted immediately to this web page with a revised "Effective Date" at the top. We encourage you to review this page periodically.
+                </p>
+            </section>
+
+            <!-- Section 11 -->
+            <section id="contact" class="section-block">
+                <h2 class="section-heading"><span class="section-number">11</span> Contact Information</h2>
+                <p>If you have any questions, comments, or concerns regarding this Privacy Policy or your data, please contact us:</p>
+                
+                <div class="callout callout-info" style="flex-direction: column; gap: 0.5rem;">
+                    <div><strong>BuildParrot Support</strong></div>
+                    <div>Developer: Sreejith K S</div>
+                    <div>Email: <a href="mailto:support@buildparrot.com" style="color: var(--primary); text-decoration: underline;">support@buildparrot.com</a></div>
+                    <div>Website / GitHub: <a href="https://github.com/kssreejith1994/LogIt" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">github.com/kssreejith1994/LogIt</a></div>
+                </div>
+            </section>
+
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#introduction">Overview</a>
+            <a href="#permissions">Permissions</a>
+            <a href="#google-drive">Google Drive Policy</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>&copy; 2026 BuildParrot (LogIt). All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
